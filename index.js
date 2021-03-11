@@ -3,6 +3,7 @@
 const article = require('./article.js')
 const user = require('./user.js')
 const axios = require('axios')
+const cors = require('cors')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -13,6 +14,8 @@ const jwt = require('jsonwebtoken')
 const passport = require('passport')
 const passportJWT = require('passport-jwt')
 const secret = 'thisismysecret'
+
+app.use(cors())
 
 async function confirmUser(email, pass) {
     const users = await user.checkIfUserExist(email, pass)
